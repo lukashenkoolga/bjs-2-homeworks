@@ -22,12 +22,12 @@ class AlarmClock {
             }
         })
         let finish = this.alarmCollection.length;
-        return currentId > finish ? true : false;
+        return currentId > finish;
     }
 
 
     getCurrentFormattedTime (){
-        return new Date().toLocaleTimeString().slice(0, -3);
+        return new Date().toLocaleTimeString("ru", {hour:"2-digit", minute:"2-digit", hour12:false});
     }
 
     start () {
@@ -59,3 +59,17 @@ class AlarmClock {
         this.alarmCollection = [];
     }
 }        
+
+function testCase() {
+    let alarm = new AlarmClock();
+    alarm.addClock("05:55", () => console.log("Доброе утро!"), 1);
+    alarm.addClock("06:00", () => {console.log("Пора вставать!"); alarm.removeClock(2)}, 2);
+    alarm.addClock("6:15", () => {console.log("Мы опаздываем!");
+        alarm.clearAlarms();
+        alarm.printAlarms();
+    }, 3);
+    alarm.addClock("06:10", () => console.log("Вставай уже!"), 1);
+    alarm.printAlarms();
+    alarm.start();
+    console.log(alarm);
+}
