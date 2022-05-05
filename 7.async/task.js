@@ -68,7 +68,7 @@ function testCase() {
         alarm.clearAlarms();
         alarm.printAlarms();
     }, 3);
-    alarm.addClock("06:10", () => console.log("Вставай уже!"), 1);
+    alarm.addClock("06:05", () => console.log("Вставай уже!"), 1);
     alarm.printAlarms();
     alarm.start();
     console.log(alarm);
