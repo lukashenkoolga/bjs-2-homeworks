@@ -37,9 +37,9 @@ class AlarmClock {
                 alarmClock.callback();
             }
         }
-        if (this.timerId === null) { this.timerId = setInterval(this.alarmCollection.forEach(alarmClock => checkClock(alarmClock)), 0);
+        this.timerId = setInterval(() => {this.alarmCollection.forEach(alarmClock => checkClock(alarmClock))}, 0);
         }
-    }
+        
 
     stop () {
         if (this.timerId !== null) {
@@ -48,7 +48,7 @@ class AlarmClock {
         }
     }
 
-    printAlarms() {
+    printAlarms(){
         console.log(`Печать всех будильников в количестве: ${this.alarmCollection.length}`);
         this.alarmCollection.forEach(alarmClock => 
             console.log(`Будильник № ${alarmClock.id} заведен на ${alarmClock.time}`));
